@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- breadcrumb start-->
+    <section class="breadcrumb breadcrumb_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb_iner text-center">
+                        <div class="breadcrumb_iner_item">
+                            <h2>Experienced Chefs</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb start-->
+
+    <!--::chefs_part start::-->
+    <section class="chefs_part blog_item_section section_padding" id="myTab" role="tablist">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-5">
+                    <div class="section_tittle">
+                        <p>Team Member</p>
+                        <h2>Our Experience Chefs</h2>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="nav nav-tabs food_menu_nav"  style="justify-content: space-between">
+
+                        {% for level in level %}
+                        {% if level.ch_level == cat %}
+                            <a class="active" href="?cat={{ level.ch_level }}#myTab">{{ level.ch_level }} <img src="{% static 'img/icon/play.svg' %}"
+                                alt="play"></a>
+                        {% else %}
+                            <a href="?cat={{ level.ch_level }}#myTab">{{ level.ch_level }}</a>
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                <div class="tab-pane fade show active single-member" id="Special" role="tabpanel" aria-labelledby="Special-tab">
+                            <div class="row">
+
+                                <div class="col-sm-6 col-lg-6">
+                                    {% for food in foods3 %}
+                                    <div class="single_food_item media">
+                                        <img src="{{ food.picture.url }}" class="mr-3" alt="..." height="109.5"; width="271.3">
+                                        <div class="media-body align-self-center">
+                                            <h3>{{ food.title }}</h3>
+                                            <p>{{ food.about }}</p>
+                                            <h5>${{ food.price }}</h5>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="col-sm-6 col-lg-6">
+                                    {% for food in foods6 %}
+                                    <div class="single_food_item media">
+                                        <img src="{{ food.picture.url }}" class="mr-3" alt="..." height="109.5"; width="271.3">
+                                        <div class="media-body align-self-center">
+                                            <h3>{{ food.title }}</h3>
+                                            <p>{{ food.about }}</p>
+                                            <h5>${{ food.price }}</h5>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="row">
+
+                {% for chef in chefs %}
+                <div class="col-sm-6 col-lg-4">
+                    <div class="single_blog_item">
+                        <div class="single_blog_img">
+                            <img src="{{ chef.picture.url }}" alt="" height="360"; width="330"; style="border-radius: 15px 15px 0 0"  >
+                        </div>
+                        <div class="single_blog_text text-center">
+                            <h3>{{ chef.full_name }}</h3>
+                            <p>{{ chef.level }}</p>
+                            <div class="social_icon">
+                                <a href="{{ chef.fasebook }}"> <i class="ti-facebook"></i> </a>
+                                <a href="{{ chef.x_tvit }}"> <i class="ti-twitter-alt"></i> </a>
+                                <a href="{{ chef.instagram }}"> <i class="ti-instagram"></i> </a>
+                                <a href="{{ chef.skype }}"> <i class="ti-skype"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    <!--::chefs_part end::-->
+
+    <!-- intro_video_bg start-->
+    <section class="intro_video_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro_video_iner text-center">
+                        <h2>Expect The Best</h2>
+                        <div class="intro_video_icon">
+                            <a id="play-video_1" class="video-play-button popup-youtube"
+                                href="https://www.youtube.com/watch?v=pBFQdxA-apI">
+                                <span class="ti-control-play"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- intro_video_bg part start-->
+
+{% endblock %}
